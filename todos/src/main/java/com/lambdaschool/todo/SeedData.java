@@ -1,6 +1,9 @@
-package com.lambdaschool.todo;// provided by Vivek Vishwanath
+package com.lambdaschool.todo;
+
+// seed data provided by Vivek Vishwanath
 
 import com.lambdaschool.todo.models.Roles;
+import com.lambdaschool.todo.models.Todo;
 import com.lambdaschool.todo.models.User;
 import com.lambdaschool.todo.models.UserRoles;
 import com.lambdaschool.todo.repository.RoleRepo;
