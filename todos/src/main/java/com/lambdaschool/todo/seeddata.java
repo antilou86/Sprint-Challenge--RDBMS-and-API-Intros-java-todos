@@ -1,13 +1,26 @@
-// provided by Vivek Vishwanath
+package com.lambdaschool.todo;// provided by Vivek Vishwanath
+
+import com.lambdaschool.todo.models.Roles;
+import com.lambdaschool.todo.models.User;
+import com.lambdaschool.todo.models.UserRoles;
+import com.lambdaschool.todo.repository.RoleRepo;
+import com.lambdaschool.todo.repository.TodoRepo;
+import com.lambdaschool.todo.repository.UserRepo;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 @Transactional
 @Component
 public class SeedData implements CommandLineRunner {
-    RoleRepository rolerepos;
-    UserRepository userrepos;
-    ToDoRepository todorepos;
+    RoleRepo rolerepos;
+    UserRepo userrepos;
+    TodoRepo todorepos;
 
-    public SeedData(RoleRepository rolerepos, UserRepository userrepos, ToDoRepository todorepos) {
+    public SeedData(RoleRepo rolerepos, UserRepo userrepos, TodoRepo todorepos) {
         this.rolerepos = rolerepos;
         this.userrepos = userrepos;
         this.todorepos = todorepos;
@@ -15,8 +28,8 @@ public class SeedData implements CommandLineRunner {
 
     @Override
     public void run(String[] args) throws Exception {
-        Role r1 = new Role("admin");
-        Role r2 = new Role("user");
+        Roles r1 = new Roles("admin");
+        Roles r2 = new Roles("user");
 
         rolerepos.save(r1);
         rolerepos.save(r2);
