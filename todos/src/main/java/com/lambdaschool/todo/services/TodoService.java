@@ -2,7 +2,6 @@ package com.lambdaschool.todo.services;
 
 import com.lambdaschool.todo.models.Todo;
 import com.lambdaschool.todo.views.TodoCount;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -8,6 +8,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
@@ -15,6 +17,8 @@ import java.util.List;
 
 @Service(value="todoService")
 public class TodoServiceImpl implements TodoService{
+    private static final Logger logger = LoggerFactory.getLogger(TodoServiceImpl.class);
+
     @Autowired
     private TodoRepo todorepo;
 
@@ -46,6 +50,7 @@ public class TodoServiceImpl implements TodoService{
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             if(todorepo.findById(id).get().getUser().getUsername().equalsIgnoreCase(authentication.getName())){
                 todorepo.deleteById(id);
+                logger.info("Todo Deleted");
             }else{
                 throw new EntityNotFoundException(Long.toString(id) + " " + authentication.getName());
             }
@@ -70,6 +75,7 @@ public class TodoServiceImpl implements TodoService{
             newTodo.setUser(todo.getUser());
         if(todo.getDatestarted()!=null)
             newTodo.setDatestarted(todo.getDatestarted());
+        logger.info("Creating a Todo");
         return todorepo.save(newTodo);
     }
 

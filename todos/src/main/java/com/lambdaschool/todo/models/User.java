@@ -10,7 +10,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// User is considered the parent entity of all - the Grand Poobah!
 
 @Entity
 @Table(name = "users")

@@ -25,7 +25,7 @@ import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHand
         {
             // http.anonymous().disable();
             http.authorizeRequests()
-                    .antMatchers("/",                       // h2
+                    .antMatchers("/",
                             "/h2-console/**",
                             "/swagger-resources/**",
                             "/swagger-resources/configuration/ui",
@@ -34,9 +34,10 @@ import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHand
                             "/swagger-ui.html",
                             "/v2/api-docs",
                             "/webjars/**").permitAll()
-                    .antMatchers("/users/**").authenticated()
-                    .antMatchers("/todos/**").authenticated()
+                    .antMatchers("/users/**", "/todos/**" ).authenticated()
                     .and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
+
+
 
             http.csrf().disable();
             http.headers().frameOptions().disable();

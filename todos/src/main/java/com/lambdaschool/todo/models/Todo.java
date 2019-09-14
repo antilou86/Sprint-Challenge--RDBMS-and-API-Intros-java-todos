@@ -82,4 +82,14 @@ public class Todo extends Auditable {
     public void setUser(User user) {
         this.user = user;
     }
+    @Override
+    public String toString()
+    {
+        return "Todo{" +
+                "todoid=" + todoid +
+                ", description='" + description + '\'' +
+                ", datestarted=" + datestarted +
+                ", completed=" + completed +
+                ", user=" + user + '}';
+    }
 }
